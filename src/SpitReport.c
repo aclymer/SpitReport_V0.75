@@ -35,6 +35,8 @@ static TextLayer *time_text_layer;
 static TextLayer *swel_text_layer;
 static TextLayer *wind_text_layer;
 static TextLayer *tide_text_layer;
+static AppTimer *toggle_timer;
+static bool toggle;
 
 static void initialise_ui(void) {
   s_window = window_create();
@@ -143,8 +145,15 @@ static void destroy_ui(void) {
   gbitmap_destroy(s_res_down_icon);
 }
 
+void toggle_timer_callback(void *data) {
+	toggle_shake(toggle);
+	toggle_timer = app_timer_register(60 + (160 * (int) toggle), toggle_timer_callback, NULL);
+	toggle = !toggle;
+}
+
 void deinit() {
 	accel_tap_service_unsubscribe();
+	app_timer_cancel(toggle_timer);
   window_stack_remove(s_window, true);
 }
 
@@ -224,12 +233,13 @@ void select_multi_click_handler(ClickRecognizerRef recognizer, void *context) {
 	send_cmd("next_day");
 }
 
-void show_refresh_icon(ClickRecognizerRef recognizer, void *context) {
-	action_bar_layer_set_icon(spot_actionbar_layer, BUTTON_ID_SELECT, s_res_refresh_icon);
+void show_locate_icon(ClickRecognizerRef recognizer, void *context) {
+	action_bar_layer_set_icon(spot_actionbar_layer, BUTTON_ID_SELECT, s_res_locate_icon);
+	vibes_short_pulse();
 }
 
 void select_long_click_handler(ClickRecognizerRef recognizer, void *context) {
-	vibes_short_pulse();
+	action_bar_layer_set_icon(spot_actionbar_layer, BUTTON_ID_SELECT, s_res_locate_icon);
 	send_cmd("locate");
 }
 
@@ -240,7 +250,7 @@ void back_single_click_handler(ClickRecognizerRef recognizer, void *context) {
 
 void back_multi_click_handler(ClickRecognizerRef recognizer, void *context) {
 	action_bar_layer_set_icon(spot_actionbar_layer, BUTTON_ID_SELECT, s_res_prev_day_icon);
-	vibes_long_pulse();
+	vibes_double_pulse();
 	send_cmd("prev_day");
 }
 
@@ -264,7 +274,7 @@ void click_config_provider(Window *window) {
 	window_multi_click_subscribe(BUTTON_ID_SELECT, 2, 2, 200 , true, select_multi_click_handler);
 	
 	// Long Click Select
-	window_long_click_subscribe(BUTTON_ID_SELECT, 400, show_refresh_icon, select_long_click_handler);
+	window_long_click_subscribe(BUTTON_ID_SELECT, 400, show_locate_icon, select_long_click_handler);
 	
 	//	Single Click Back
 	window_single_click_subscribe(BUTTON_ID_BACK, back_single_click_handler);
@@ -277,10 +287,9 @@ void click_config_provider(Window *window) {
 }
 
 void tap_handler(AccelAxisType axis, int32_t dir) {
-	if (axis == 1) {
-		hide_splash_screen();
-		send_cmd("refresh");
-	}
+	hide_splash_screen();
+	action_bar_layer_set_icon(spot_actionbar_layer, BUTTON_ID_SELECT, s_res_refresh_icon);
+	send_cmd("refresh");
 }
 
 static void init(void) {
@@ -308,6 +317,7 @@ static void init(void) {
 	
   window_stack_push(s_window, true);	
 	show_splash_screen();
+	app_timer_register(80, toggle_timer_callback, NULL);
 	send_cmd("locate");
 }
 

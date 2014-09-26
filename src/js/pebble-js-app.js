@@ -3,8 +3,7 @@ var DEBUG = true;	// Set 'true' for console messages
 var spot_id;
 var d = new Date();
 var hr = d.getHours();
-if (DEBUG) console.log(d,hr);
-//var direction;
+if (DEBUG === true) console.log(d,hr);
 var nearby_spot_id;
 var county;
 var water_temp;
@@ -141,7 +140,7 @@ function fetchSurf(Id, index) {
 					if (index === "next_day") hr += 24;
 					if (index === "prev_day") hr -= 24;
 					if (hr > 168) hr = 168;
-					if (hr < d.getHours()) hr = d.getHours();
+					if (hr < Math.round(d.getMinutes()/60) + d.getHours()) hr = parseInt(Math.round(d.getMinutes()/60) + d.getHours());
 					if (DEBUG) console.log("Hr: " + hr);
 					
 					spot_name = surfResult[hr].spot_name;
@@ -198,6 +197,7 @@ function sendMessage(message) {
 function locationSuccess(pos) {
 	if (DEBUG === true) console.warn("Location Found!");
 //	var coordinates = pos.coords;
+	hr = parseInt(Math.round(d.getMinutes()/60) + d.getHours());
 	fetchNearby(pos);
 }
 
