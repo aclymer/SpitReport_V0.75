@@ -1,4 +1,4 @@
-var DEBUG = true;	// Set 'true' for console messages
+var DEBUG = false;	// Set 'true' for console messages
 
 var spot_id;
 var d = new Date();
