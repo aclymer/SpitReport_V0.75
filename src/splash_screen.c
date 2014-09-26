@@ -1,6 +1,9 @@
 #include "splash_screen.h"
 #include <pebble.h>
 
+#undef ACTION_BAR_WIDTH
+#define ACTION_BAR_WIDTH   15
+
 // BEGIN AUTO-GENERATED UI CODE; DO NOT MODIFY
 static Window *s_window;
 static GFont s_res_gothic_14;
@@ -21,7 +24,7 @@ static ActionBarLayer *s_actionbarlayer_1;
 static void initialise_ui(void) {
   s_window = window_create();
   window_set_background_color(s_window, GColorBlack);
-  window_set_fullscreen(s_window, true);
+  window_set_fullscreen(s_window, 0);
   
   s_res_gothic_14 = fonts_get_system_font(FONT_KEY_GOTHIC_14);
   s_res_spitcast_logo = gbitmap_create_with_resource(RESOURCE_ID_SPITCAST_LOGO);
@@ -55,7 +58,7 @@ static void initialise_ui(void) {
   layer_add_child(window_get_root_layer(s_window), (Layer *)s_textlayer_3);
   
   // s_textlayer_4
-  s_textlayer_4 = text_layer_create(GRect(42, 54, 87, 42));
+  s_textlayer_4 = text_layer_create(GRect(41, 54, 87, 42));
   text_layer_set_background_color(s_textlayer_4, GColorClear);
   text_layer_set_text_color(s_textlayer_4, GColorWhite);
   text_layer_set_text(s_textlayer_4, "+1 Hr    (Single)  +1 Day (Double) Locate (Hold)     ");
@@ -88,7 +91,7 @@ static void initialise_ui(void) {
   // s_actionbarlayer_1
   s_actionbarlayer_1 = action_bar_layer_create();
   action_bar_layer_add_to_window(s_actionbarlayer_1, s_window);
-  action_bar_layer_set_background_color(s_actionbarlayer_1, GColorClear);
+  action_bar_layer_set_background_color(s_actionbarlayer_1, GColorBlack);
   action_bar_layer_set_icon(s_actionbarlayer_1, BUTTON_ID_UP, s_res_up_icon);
   action_bar_layer_set_icon(s_actionbarlayer_1, BUTTON_ID_SELECT, s_res_next_hr_icon);
   action_bar_layer_set_icon(s_actionbarlayer_1, BUTTON_ID_DOWN, s_res_down_icon);

@@ -1,9 +1,6 @@
 #include <pebble.h>
 #include "splash_screen.h"
 
-#undef ACTION_BAR_WIDTH
-#define ACTION_BAR_WIDTH   15
-
 enum {
 	SPOT_IDEN_KEY		= 0,		// TUPLE_CSTRING
 	SPOT_NAME_KEY 	= 1,		// TUPLE_CSTRING
