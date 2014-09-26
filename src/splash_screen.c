@@ -11,6 +11,7 @@ static GBitmap *s_res_spitcast_logo;
 static GBitmap *s_res_up_icon;
 static GBitmap *s_res_next_hr_icon;
 static GBitmap *s_res_down_icon;
+static ActionBarLayer *s_actionbarlayer_1;
 static TextLayer *s_textlayer_1;
 static TextLayer *s_textlayer_2;
 static TextLayer *s_textlayer_3;
@@ -19,7 +20,6 @@ static TextLayer *s_textlayer_5;
 static InverterLayer *s_inverterlayer_1;
 static InverterLayer *s_inverterlayer_2;
 static BitmapLayer *s_bitmaplayer_1;
-static ActionBarLayer *s_actionbarlayer_1;
 
 static void initialise_ui(void) {
   s_window = window_create();
@@ -31,6 +31,15 @@ static void initialise_ui(void) {
   s_res_up_icon = gbitmap_create_with_resource(RESOURCE_ID_UP_ICON);
   s_res_next_hr_icon = gbitmap_create_with_resource(RESOURCE_ID_NEXT_HR_ICON);
   s_res_down_icon = gbitmap_create_with_resource(RESOURCE_ID_DOWN_ICON);
+  // s_actionbarlayer_1
+  s_actionbarlayer_1 = action_bar_layer_create();
+  action_bar_layer_add_to_window(s_actionbarlayer_1, s_window);
+  action_bar_layer_set_background_color(s_actionbarlayer_1, GColorBlack);
+  action_bar_layer_set_icon(s_actionbarlayer_1, BUTTON_ID_UP, s_res_up_icon);
+  action_bar_layer_set_icon(s_actionbarlayer_1, BUTTON_ID_SELECT, s_res_next_hr_icon);
+  action_bar_layer_set_icon(s_actionbarlayer_1, BUTTON_ID_DOWN, s_res_down_icon);
+  layer_add_child(window_get_root_layer(s_window), (Layer *)s_actionbarlayer_1);
+  
   // s_textlayer_1
   s_textlayer_1 = text_layer_create(GRect(126, 5, 15, 17));
   text_layer_set_background_color(s_textlayer_1, GColorClear);
@@ -86,19 +95,11 @@ static void initialise_ui(void) {
   s_bitmaplayer_1 = bitmap_layer_create(GRect(12, 82, 29, 77));
   bitmap_layer_set_bitmap(s_bitmaplayer_1, s_res_spitcast_logo);
   layer_add_child(window_get_root_layer(s_window), (Layer *)s_bitmaplayer_1);
-  
-  // s_actionbarlayer_1
-  s_actionbarlayer_1 = action_bar_layer_create();
-  action_bar_layer_add_to_window(s_actionbarlayer_1, s_window);
-  action_bar_layer_set_background_color(s_actionbarlayer_1, GColorBlack);
-  action_bar_layer_set_icon(s_actionbarlayer_1, BUTTON_ID_UP, s_res_up_icon);
-  action_bar_layer_set_icon(s_actionbarlayer_1, BUTTON_ID_SELECT, s_res_next_hr_icon);
-  action_bar_layer_set_icon(s_actionbarlayer_1, BUTTON_ID_DOWN, s_res_down_icon);
-  layer_add_child(window_get_root_layer(s_window), (Layer *)s_actionbarlayer_1);
 }
 
 static void destroy_ui(void) {
   window_destroy(s_window);
+  action_bar_layer_destroy(s_actionbarlayer_1);
   text_layer_destroy(s_textlayer_1);
   text_layer_destroy(s_textlayer_2);
   text_layer_destroy(s_textlayer_3);
@@ -107,7 +108,6 @@ static void destroy_ui(void) {
   inverter_layer_destroy(s_inverterlayer_1);
   inverter_layer_destroy(s_inverterlayer_2);
   bitmap_layer_destroy(s_bitmaplayer_1);
-  action_bar_layer_destroy(s_actionbarlayer_1);
   gbitmap_destroy(s_res_spitcast_logo);
   gbitmap_destroy(s_res_up_icon);
   gbitmap_destroy(s_res_next_hr_icon);
