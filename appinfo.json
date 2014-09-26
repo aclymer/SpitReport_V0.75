@@ -1,0 +1,94 @@
+{
+    "appKeys": {
+        "index": 9,
+        "ready_key": 10,
+        "spot_id": 0,
+        "spot_name": 1,
+        "surf_hght": 2,
+        "surf_text": 3,
+        "swel_text": 5,
+        "tide_text": 7,
+        "time_text": 4,
+        "watr_temp": 8,
+        "wind_text": 6
+    },
+    "capabilities": [
+        "location"
+    ],
+    "companyName": "Aaron Clymer (c) 2014",
+    "longName": "Spitcast Surf Report",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/right.png",
+                "name": "NEXT_HR_ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/left.png",
+                "name": "PREV_HR_ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/Spitcast_Logo.png",
+                "name": "SPITCAST_LOGO",
+                "type": "png"
+            },
+            {
+                "characterRegex": "[A-Z0-9!#$%&()*+]",
+                "file": "fonts/meteocons-webfont.ttf",
+                "name": "FONT_MATEOCONS_28",
+                "type": "font"
+            },
+            {
+                "file": "images/watch_menu_icon.png",
+                "menuIcon": true,
+                "name": "WAVE_MENU_ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/down.png",
+                "name": "DOWN_ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/up.png",
+                "name": "UP_ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/next.png",
+                "name": "NEXT_DAY_ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/prev.png",
+                "name": "PREV_DAY_ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/wave.png",
+                "name": "WAVE_ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/refresh_icon.png",
+                "name": "REFRESH_ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/location_icon.png",
+                "name": "LOCATE_ICON",
+                "type": "png"
+            }
+        ]
+    },
+    "shortName": "Spitcast Surf Report",
+    "uuid": "3ac07819-0941-41a4-9583-6142369dd926",
+    "versionCode": 6,
+    "versionLabel": "0.75",
+    "watchapp": {
+        "watchface": false
+    }
+}
