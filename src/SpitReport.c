@@ -24,6 +24,7 @@ static GBitmap *s_res_locate_icon;
 static GBitmap *s_res_refresh_icon;
 static GBitmap *s_res_prev_day_icon;
 static GBitmap *s_res_next_day_icon;
+static GBitmap *s_res_wave_icon;
 static GFont s_res_gothic_18;
 static GFont s_res_gothic_18_bold;
 static GFont s_res_gothic_24;
@@ -52,6 +53,10 @@ static void initialise_ui(void) {
   s_res_refresh_icon = gbitmap_create_with_resource(RESOURCE_ID_REFRESH_ICON);
   s_res_prev_day_icon = gbitmap_create_with_resource(RESOURCE_ID_PREV_DAY_ICON);
   s_res_next_day_icon = gbitmap_create_with_resource(RESOURCE_ID_NEXT_DAY_ICON);
+  s_res_wave_icon = gbitmap_create_with_resource(RESOURCE_ID_WAVE_ICON);
+	
+	// Set status bar icon
+	window_set_status_bar_icon(s_window, s_res_wave_icon);
 	
 	// Initialize Fonts
   s_res_gothic_18 = fonts_get_system_font(FONT_KEY_GOTHIC_18);
