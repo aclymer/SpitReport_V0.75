@@ -98,7 +98,7 @@ static void initialise_ui(void) {
   time_text_layer = text_layer_create(GRect(9, 38, 115, 20));
   text_layer_set_background_color(time_text_layer, GColorClear);
   text_layer_set_text_color(time_text_layer, GColorWhite);
-  text_layer_set_text(time_text_layer, "Version 0.70");
+  text_layer_set_text(time_text_layer, "Version 0.75");
   text_layer_set_text_alignment(time_text_layer, GTextAlignmentCenter);
   text_layer_set_font(time_text_layer, s_res_gothic_18_bold);
   layer_add_child(window_get_root_layer(s_window), (Layer *)time_text_layer);
