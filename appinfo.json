@@ -15,24 +15,50 @@
     "capabilities": [
         "location"
     ],
-    "companyName": "Aaron Clymer (c) 2014",
+    "companyName": "A. Clymer (c) 2015",
     "longName": "Spitcast Surf Report",
     "projectType": "native",
     "resources": {
         "media": [
             {
-                "file": "images/right.png",
-                "name": "NEXT_HR_ICON",
+                "file": "images/location_icon.png",
+                "name": "LOCATE_ICON",
                 "type": "png"
             },
             {
-                "file": "images/left.png",
-                "name": "PREV_HR_ICON",
+                "file": "images/refresh_icon.png",
+                "name": "REFRESH_ICON",
                 "type": "png"
             },
             {
-                "file": "images/Spitcast_Logo.png",
-                "name": "SPITCAST_LOGO",
+                "file": "images/wave.png",
+                "name": "WAVE_ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/prev.png",
+                "name": "PREV_DAY_ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/next.png",
+                "name": "NEXT_DAY_ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/up.png",
+                "name": "UP_ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/down.png",
+                "name": "DOWN_ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/watch_menu_icon.png",
+                "menuIcon": true,
+                "name": "WAVE_MENU_ICON",
                 "type": "png"
             },
             {
@@ -42,52 +68,27 @@
                 "type": "font"
             },
             {
-                "file": "images/watch_menu_icon.png",
-                "menuIcon": true,
-                "name": "WAVE_MENU_ICON",
+                "file": "images/Spitcast_Logo.png",
+                "name": "SPITCAST_LOGO",
                 "type": "png"
             },
             {
-                "file": "images/down.png",
-                "name": "DOWN_ICON",
+                "file": "images/left.png",
+                "name": "PREV_HR_ICON",
                 "type": "png"
             },
             {
-                "file": "images/up.png",
-                "name": "UP_ICON",
-                "type": "png"
-            },
-            {
-                "file": "images/next.png",
-                "name": "NEXT_DAY_ICON",
-                "type": "png"
-            },
-            {
-                "file": "images/prev.png",
-                "name": "PREV_DAY_ICON",
-                "type": "png"
-            },
-            {
-                "file": "images/wave.png",
-                "name": "WAVE_ICON",
-                "type": "png"
-            },
-            {
-                "file": "images/refresh_icon.png",
-                "name": "REFRESH_ICON",
-                "type": "png"
-            },
-            {
-                "file": "images/location_icon.png",
-                "name": "LOCATE_ICON",
+                "file": "images/right.png",
+                "name": "NEXT_HR_ICON",
                 "type": "png"
             }
         ]
     },
+    "sdkVersion": "2",
     "shortName": "Spitcast Surf Report",
     "uuid": "3ac07819-0941-41a4-9583-6142369dd926",
-    "versionCode": 6,
-    "versionLabel": "0.75",
+    "versionCode": 1,
+    "versionLabel": "0.76",
     "watchapp": {
         "watchface": false
     }
